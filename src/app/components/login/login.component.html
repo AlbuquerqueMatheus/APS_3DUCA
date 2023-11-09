@@ -1,0 +1,52 @@
+<div class="conteudo-login">
+    <form class="conteudo-form" [formGroup]="loginForm">
+        <div class="flex">
+            <div class="block">
+                <div class="space">
+                    <p class="login">Login</p>
+                </div>
+                <div>
+                    <div>
+                        <input class="input-login" placeholder="Numero de mátricula" formControlName="email" />
+                    </div>
+                    <div class="mensagem-erro"
+                        *ngIf="loginForm.get('email')?.errors?.['required']&& loginForm.get('email')?.touched">
+                        Campo Obrigatório!
+                    </div>
+                    <div class="mensagem-erro"
+                        *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched">
+                        Formato do email não é valido!
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <input class="input-login" type="password" placeholder="Senha" formControlName="senha" />
+                    </div>
+                    <div class="mensagem-erro"
+                        *ngIf="loginForm.get('senha')?.errors?.['required']&& loginForm.get('email')?.touched">
+                        Campo Obrigatório!
+                    </div>
+                </div>
+                <div>
+                    <button class="input-submit">Entrar</button>
+                </div>
+            </div>
+            <div class="block2">
+                <div class="logo">
+                    <img src="assets/img/logo.png" alt="logo-todo">
+                </div>
+                <div>
+                    <p class="login">Bem vindo de volta!</p>
+                </div>
+                <div class="flex2">
+                    <div class="space3">
+                        <p class="small">Não tem uma conta?</p>
+                    </div>
+                    <div class="space4">
+                        <p class="small">Cadastre-se</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

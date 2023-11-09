@@ -1,0 +1,173 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  height: 15rem;
+  width: 15rem;
+}
+
+.first img {
+  width: 45rem;
+  height: 40rem;
+  margin-top: 15%;
+  margin-left: 5%;
+}
+
+.second img {
+  width: 45rem;
+  height: 40rem;
+  margin-right: 20%;
+}
+
+.third img {
+  width: 45rem;
+  height: 40rem;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-left: 8%;
+}
+
+.center2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-right: 10%;
+}
+
+
+.imagine {
+  width: 20rem;
+  height: 10rem;
+  margin-bottom: 250px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.distance {
+  margin-left: 5%;
+}
+
+.distance p {
+  text-align:left;
+
+}
+
+.Teste {
+  width: 100%;
+  margin-left: 10%;
+}
+
+.Teste2 {
+  width: 100%;
+  margin-left: 15%;
+  margin-top: 10%;
+}
+
+.size {
+  width: 80%;
+  height: 100%;
+  margin-left: 5%;
+}
+
+.size button {
+  margin-top: 5%;
+  margin-left: 1%;
+  width: 46%;
+  height: 55px;
+}
+
+.custom-button {
+  background-color: rgba(255, 137.7, 0, 1) !important;
+  color: rgb(0, 0, 0) !important;
+  font-size: 25px;
+}
+
+.full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.block {
+  display: block;
+  width: 100%;
+  margin-top: 3%;
+}
+
+.black .full img {
+  height: 15rem;
+  width: 20rem;
+}
+
+.BV{
+  color: rgba(255, 255, 255, 1);
+  width: 564px;
+  height: 179px;
+  font-family: Poppins;
+  text-align: left;
+  font-size: 60px;
+  letter-spacing: 0;
+  line-height: 1;
+  justify-content: flex-start;
+}
+
+.two {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-left: 6%;
+  margin-bottom: 5%;
+}
+
+.four {
+  width: 100%;
+}
+
+.caption {
+  color: rgba(145.56249797344208, 145.56249797344208, 145.56249797344208, 1);
+  width: 75%;
+  height: auto;
+  font-family: Open Sans;
+  text-align: left;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+
+.black {
+  background-color: #000000;
+}
+
+.gray {
+  background-color: rgba(21, 21, 21, 1);
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+
+}
+
+mat-card {
+  margin-top: .8rem;
+  padding: .2rem;
+}
+
+

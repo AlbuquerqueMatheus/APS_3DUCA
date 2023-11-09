@@ -1,0 +1,60 @@
+.header {
+    justify-content: center;
+    height: 10%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(21, 21, 21, 1);
+    display: flex;
+}
+
+img {
+    height: 7rem;
+}
+
+.container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.top {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    align-items: end;
+}
+
+
+.logo {
+    width: 50%;
+    margin-left: 9%;
+}
+
+.notBackground {
+    background-color: transparent !important;
+    color: rgba(255, 255, 255, 1) !important;
+}
+
+.create {
+    background-color: transparent !important;
+    border: 2px solid rgba(255, 137.69999027252197, 0, 1);
+    color: rgba(255, 137.69999027252197, 0, 1);
+    color: rgba(255, 255, 255, 1) !important;
+}
+
+.login {
+    background-color: rgba(255, 137.69999027252197, 0, 1) !important;
+    color: rgb(0, 0, 0) !important;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    margin-right: 9%;
+}
+
+.menu button {
+    margin: .5rem;
+}
