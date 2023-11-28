@@ -14,9 +14,10 @@ p {
     font-size: 300%;
     /* Aumenta o tamanho da fonte para 120% do tamanho da fonte padrão em telas maiores que 768px */
   }
-  .custom-button {
-    font-size: 2em; /* Aumenta o tamanho da fonte para 2 vezes o tamanho da fonte padrão em telas maiores que 768px */
+  /* .custom-button {
+    font-size: 2em; /* Aumenta o tamanho da fonte para 2 vezes o tamanho da fonte padrão em telas maiores que 768px 
   }
+  */
 }
 
 html,

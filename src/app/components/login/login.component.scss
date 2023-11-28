@@ -7,24 +7,34 @@
     height: 100%;
     padding: 0;
     margin: 0;
+}
 
-    .conteudo-form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
-        background-color: rgba(21, 21, 21, 1);
-        box-shadow: 0 15px 15px 0 rgb(255, 168, 69);
-        text-align: center;
-        padding-bottom: 5%;
-        width: 98%;
-        height: 80%;
-        transition: all 0.5s ease-in-out;
-    }
+.custom-dialog-class .cdk-overlay-pane {
+    background-color: transparent;
+  }
+  
+  .custom-dialog-class .mat-dialog-container {
+    box-shadow: none;
+    background-color: transparent;
+  }
+  
 
-    .conteudo-form:hover {
-        box-shadow: 0 15px 15px 0 rgb(255, 137.7, 0, 1);
-    }
+.conteudo-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: rgba(21, 21, 21, 1);
+    box-shadow: 0 15px 15px 0 rgb(255, 168, 69);
+    text-align: center;
+    padding-bottom: 5%;
+    width: 90%;
+    height: 80%;
+    transition: all 0.5s ease-in-out;
+}
+
+.conteudo-form:hover {
+    box-shadow: 0 15px 15px 0 rgb(255, 137.7, 0, 1);
 }
 
 .input-login {

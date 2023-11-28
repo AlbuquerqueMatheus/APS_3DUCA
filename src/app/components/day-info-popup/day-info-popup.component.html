@@ -1,0 +1,25 @@
+<div class="popup-container">
+    <div class="teste">
+        <div>
+            <h2>Informações do Dia</h2>
+        </div>
+        <div>
+            <button type="button" class="close-button" aria-label="Close" (click)="closeDialog()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    <div class="data">
+        <p>Horarios Disponiveis para {{ data.date | date }}:</p>
+    </div>
+    <div class="available-times">
+        <mat-radio-group [(ngModel)]="selectedTime">
+            <mat-radio-button *ngFor="let time of availableTimes" [value]="time">
+                {{ time }}
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="agendar">
+        <button mat-raised-button color="primary">Agendar</button>
+    </div>
+</div>

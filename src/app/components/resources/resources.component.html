@@ -1,0 +1,12 @@
+<div class="content">
+    <div class="colum">
+        <div class="black full">
+            <p style="font-size: 3rem;" class="BV">Tutoriais</p>
+        </div>
+        <ng-image-slider [images]="imgCollection" (imageClick)="openYouTubeVideo()"></ng-image-slider>
+        <div class="black full">
+            <p style="font-size: 3rem;" class="BV">Cursos</p>
+        </div>
+        <ng-image-slider [images]="imgCursos" #nav></ng-image-slider>
+    </div>
+</div>
