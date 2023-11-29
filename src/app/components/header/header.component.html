@@ -1,18 +1,20 @@
 <div class="container">
-    <div class="top">
         <mat-toolbar class="header mat-elevation-z8">
-            <div class="logo">
-                <img src="assets/img/logo.png" alt="logo-todo">
-            </div>
-            <div class="menu">
-                <button mat-flat-button class="notBackground">Sobre</button>
-                <button mat-flat-button class="notBackground">Recursos</button>
-                <button mat-flat-button class="notBackground">Comunidade</button>
-                <button mat-flat-button class="create" *ngIf="!isLoged()" (click)="openCreateDialog()">Criar Conta</button>
-                <button mat-flat-button class="login"  *ngIf="!isLoged()" (click)="openLoginDialog()">Entrar</button>
-                <button mat-flat-button class="login" *ngIf="isLoged()">Agendar Reunião</button>
-                <button mat-flat-button class="login" *ngIf="isLoged()" (click)="logout()">Sair</button>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="assets/img/logo.png" alt="logo-todo">
+                </div>
+                <div class="menu">
+                    <a routerLink="/home" routerLinkActive="active">Sobre</a>
+                    <a routerLink="/todo" routerLinkActive="active">Recursos</a>
+                    <a routerLink="/about" routerLinkActive="active">Comunidade</a>
+                </div>
+                <div class="buttons-actions">
+                    <button mat-flat-button class="btn btn-create" *ngIf="!isLoged()" (click)="openCreateDialog()">Criar Conta</button>
+                    <button mat-flat-button class="btn btn-login"  *ngIf="!isLoged()" (click)="openLoginDialog()">Entrar</button>
+                    <button mat-flat-button class="btn btn-schedule" *ngIf="isLoged()">Agendar Reunião</button>
+                    <button mat-flat-button class="btn btn-logout" *ngIf="isLoged()" (click)="logout()">Sair</button>
+                </div>
             </div>
         </mat-toolbar>
-    </div>
 </div>
