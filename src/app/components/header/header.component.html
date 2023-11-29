@@ -12,7 +12,7 @@
                 <div class="buttons-actions">
                     <button mat-flat-button class="btn btn-create" *ngIf="!isLoged()" (click)="openCreateDialog()">Criar Conta</button>
                     <button mat-flat-button class="btn btn-login"  *ngIf="!isLoged()" (click)="openLoginDialog()">Entrar</button>
-                    <button mat-flat-button class="btn btn-schedule" *ngIf="isLoged()">Agendar Reunião</button>
+                    <button mat-flat-button class="btn btn-schedule" *ngIf="isLoged()" (click)="goToSchedulingPage()">Agendar Reunião</button>
                     <button mat-flat-button class="btn btn-logout" *ngIf="isLoged()" (click)="logout()">Sair</button>
                 </div>
             </div>

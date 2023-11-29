@@ -21,6 +21,16 @@ import { DayInfoPopupComponent } from './components/day-info-popup/day-info-popu
 import { ModalContentComponent } from './components/modal-content/modal-content.component';
 import { LocalStorageService } from './local-storage.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SchedulingComponent } from './components/scheduling/scheduling.component';
+import {FormBuilder, Validators, FormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {AsyncPipe} from '@angular/common';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -33,6 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     ModalContentComponent,
     CalendarComponent,
     DayInfoPopupComponent,
+    SchedulingComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +55,14 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     ReactiveFormsModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatStepperModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    AsyncPipe,
+    
   ],
   schemas: [
     NO_ERRORS_SCHEMA

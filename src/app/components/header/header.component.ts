@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { CreateComponent } from '../create/create.component';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,7 @@ import { CreateComponent } from '../create/create.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private router: Router) {}
 
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
@@ -40,5 +42,9 @@ export class HeaderComponent {
 
   logout(): void {
     localStorage.clear();
+  }
+
+  goToSchedulingPage(): void {
+    this.router.navigate(['/scheduling']);
   }
 }
