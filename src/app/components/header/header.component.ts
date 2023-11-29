@@ -33,4 +33,12 @@ export class HeaderComponent {
       console.log('O diálogo foi fechado');
     });
   }
+
+  isLoged(): boolean {
+    return localStorage.getItem('isLoged') === 'true';
+  }
+
+  logout(): void {
+    localStorage.clear();
+  }
 }

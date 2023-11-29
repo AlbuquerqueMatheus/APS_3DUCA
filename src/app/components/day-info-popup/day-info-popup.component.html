@@ -13,7 +13,7 @@
         <p>Horarios Disponiveis para {{ data.date | date }}:</p>
     </div>
     <div class="available-times">
-        <mat-radio-group [(ngModel)]="selectedTime">
+        <mat-radio-group (ngModel)="selectedTime">
             <mat-radio-button *ngFor="let time of availableTimes" [value]="time">
                 {{ time }}
             </mat-radio-button>

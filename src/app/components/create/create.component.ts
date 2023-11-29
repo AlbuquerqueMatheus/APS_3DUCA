@@ -1,10 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginModel } from 'src/app/models/LoginModel';
-import { HttpClient } from '@angular/common/http';
-
-
+import { LocalStorageService } from '../../local-storage.service';
 
 @Component({
   selector: 'app-create',
@@ -19,13 +18,13 @@ export class CreateComponent implements OnInit {
   creatForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-    private router: Router, private http: HttpClient ) { }
+    private router: Router, private http: HttpClient, private LocalStorageService: LocalStorageService) { }
   ngOnInit(): void {
     this.creatForm = this.formBuilder.group(
       {
         nome: ['', [Validators.required]],
         nick: ['', [Validators.required]],
-        email: ['', [Validators.required]],
+        email: ['', [Validators.required,]],
         senha: ['', [Validators.required]]
       });
   }
@@ -34,21 +33,19 @@ export class CreateComponent implements OnInit {
     var dadosCreate = this.creatForm.getRawValue() as LoginModel;
   }
 
-//   {
-//     "name": "Teste",
-//     "userName": "teste1",
-//     "password": "123456",
-//     "registration": "8373625251"
-// }
-
   createAccount() {
-
-    const result = this.http.post("https://api-vapor.fly.dev/usuarios/cadastrar", {
-      "name": this.creatForm.value.nome,
-      "userName": this.creatForm.value.nick,
-      "password": this.creatForm.value.senha,
-      "registration": this.creatForm.value.email
-    }).toPromise().then((data) => console.log(data))
-
+    this.http.post("https://api-vapor.fly.dev/usuarios/cadastrar", {
+      name: this.creatForm.value.nome,
+      userName: this.creatForm.value.nick,
+      registration: this.creatForm.value.email,
+      password: this.creatForm.value.senha
+    }).subscribe((response) => {
+      alert("Usuário cadastrado com sucesso! acesse seu login");
+      location.reload();
+      
+    }, (error) => {
+      console.log(error);
+      alert("Erro ao cadastrar usuário!");
+    })
   }
 }
