@@ -15,7 +15,7 @@
                 </mat-autocomplete>
             </mat-form-field>
             <div>
-                <button mat-button matStepperNext (click)="getHorariosByMonitor()">Próximo</button>
+                <button mat-button matStepperNext (click)="getHorariosByMonitor()">Proximo</button>
             </div>
         </form>
     </mat-step>
@@ -34,7 +34,7 @@
             </mat-form-field>
             <div>
                 <button mat-button matStepperPrevious>Voltar</button>
-                <button mat-button matStepperNext>Próximo</button>
+                <button mat-button matStepperNext>Proximo</button>
             </div>
         </form>
 
@@ -48,7 +48,7 @@
             <p>Monitor: {{selectedMonitorName ?? ''}}</p>
             <p>Horario: {{formatTime(selectedTime)}}</p>
             <div class="step-done-action">
-                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperPrevious>Voltar</button>
                 <button mat-button (click)="agendar()" [disabled]="isValid()">Agendar</button>
             </div>
         </div>
