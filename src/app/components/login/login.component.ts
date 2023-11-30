@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   }
   submitLogin() {
     const dadosLogin = this.loginForm.getRawValue() as LoginModel;
-    console.log(dadosLogin);
     this.http.post('https://api-vapor.fly.dev/login',{}, {
       headers: {
         'Authorization': 'Basic ' + btoa(dadosLogin.email + ':' + dadosLogin.senha)
@@ -32,6 +31,7 @@ export class LoginComponent implements OnInit {
     }).subscribe(
       (result: any) => {
         localStorage.setItem('isLoged', 'true');
+        localStorage.setItem('token', result.value);
         location.reload();
       },
       (error) => {

@@ -8,13 +8,14 @@
                 <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
                     [matAutocomplete]="auto">
                 <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                        {{ option }}
+                    <mat-option *ngFor="let option of options" [value]="option.name" (click)="selectedMonitor(option)">
+                        {{ option.name }}
                     </mat-option>
+
                 </mat-autocomplete>
             </mat-form-field>
             <div>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperNext (click)="getHorariosByMonitor()">Próximo</button>
             </div>
         </form>
     </mat-step>
@@ -24,27 +25,32 @@
         <form [formGroup]="secondFormGroup">
             <mat-form-field class="example-full-width">
                 <mat-label>Escolha um horario</mat-label>
-                <input type="text" matInput [formControl]="selectedTimeControl" [matAutocomplete]="autoTime">
+                <input type="text" matInput [formControl]="selectedTimeControl" [matAutocomplete]="autoTime" [value]="formatTime(selectedTimeControl.value)">
                 <mat-autocomplete #autoTime="matAutocomplete">
-                  <mat-option *ngFor="let time of filteredTime | async" [value]="time">
-                    {{ time }}
+                  <mat-option *ngFor="let time of availableTimes" [value]="time" (click)="selectedTimeMonitor(time)">
+                    {{ formatTime(time)  }}
                   </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
             <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperPrevious>Voltar</button>
+                <button mat-button matStepperNext>Próximo</button>
             </div>
         </form>
-    </mat-step>
+
+''    </mat-step>
 
     <!-- Terceiro passo -->
     <mat-step>
         <ng-template matStepLabel>Finalizado</ng-template>
-        <p>Reunião Agendada com sucesso!</p>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+        <div class="step-done">
+            <h3>Resumo do Agendamento:</h3>
+            <p>Monitor: {{selectedMonitorName ?? ''}}</p>
+            <p>Horario: {{formatTime(selectedTime)}}</p>
+            <div class="step-done-action">
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="agendar()" [disabled]="isValid()">Agendar</button>
+            </div>
         </div>
     </mat-step>
 </mat-stepper>

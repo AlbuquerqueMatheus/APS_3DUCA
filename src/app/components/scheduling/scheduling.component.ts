@@ -1,7 +1,8 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-scheduling',
@@ -10,12 +11,16 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class SchedulingComponent implements OnInit {
   myControl = new FormControl('');
-  options: string[] = ['Matheus', 'Lidiane', 'Donny'];
+  options: any[] = [];
   filteredOptions?: Observable<string[]>;
+  monitorSelectedId: any;
+  selectedMonitorName: any;
 
   availableTimes: string[] = ['8:00', '9:00', '10:00', '11:00'];
   selectedTimeControl = new FormControl('');
-  filteredTime?: Observable<string[]>;
+  filteredTime?: any[] = [];
+
+  selectedTime: any;
 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
@@ -24,29 +29,85 @@ export class SchedulingComponent implements OnInit {
     secondCtrl: ['', Validators.required],
     timeCtrl: ['', Validators.required],
   });
+
   isLinear = false;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
-
-    this.filteredTime = this.selectedTimeControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filterTime(value || '')),
-    );
+     this.getMonitors()
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+
+  getMonitors()  {
+    return this.http.get('https://api-vapor.fly.dev/monitores', {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    }).subscribe((result: any) => {
+      this.options = result.map((monitor: any) => ({
+        name: monitor.name,
+        id: monitor.id
+      }));
+
+      console.log(this.options);
+    }, (error) => {
+      console.error(error);
+    })
   }
 
-  private _filterTime(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.availableTimes.filter(time => time.toLowerCase().includes(filterValue));
+
+  getHorariosByMonitor() {
+    this.http.get('https://api-vapor.fly.dev/monitores/' + this.monitorSelectedId + '/agenda', {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    }).subscribe((result: any) => {
+      this.availableTimes = result ;
+    }, (error) => {
+      console.error(error);
+    })
+  }
+
+  // https://api-vapor.fly.dev/monitores/:id/agenda
+
+  selectedMonitor(monitor: any) {
+    this.monitorSelectedId = monitor.id;
+    this.selectedMonitorName = monitor.name;
+  }
+
+  selectedTimeMonitor(time: any) {
+    this.selectedTime = time;
+  }
+
+  agendar() {
+    const data = {
+      monitor: this.monitorSelectedId,
+      date: this.selectedTime
+    }
+  
+    this.http.post('https://api-vapor.fly.dev/agendamentos', data, {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    }).subscribe((result: any) => {
+      alert('Agendamento realizado com sucesso!');
+      this.router.navigate(['/']);
+
+    }, (error) => {
+      console.error(error);
+      alert('Erro ao realizar agendamento!');
+    })
+  }
+
+  formatTime(horario: any) {
+    if (!horario) return;
+    return new Date(horario).toLocaleTimeString('pt-BR', { day: '2-digit', month: 'long' , hour: '2-digit', minute: '2-digit' });
+  }
+  
+
+  isValid() {
+    if (!this.monitorSelectedId || !this.selectedTime) return true;
+    return false;
   }
 }
