@@ -2,12 +2,15 @@
         <mat-toolbar class="header mat-elevation-z8">
             <div class="navbar">
                 <div class="logo">
-                    <img src="assets/img/logo.png" alt="logo-todo">
+                    <a routerLink="/" routerLinkActive="active">
+                        <img src="assets/img/logo.png" alt="logo-todo">
+                    </a>
                 </div>
                 <div class="menu">
-                    <a routerLink="/home" routerLinkActive="active">Sobre</a>
+                    <a routerLink="/" routerLinkActive="active">Início</a>
+                    <a routerLink="/about" routerLinkActive="active">Sobre</a>
+                    <a routerLink="/community" routerLinkActive="active">Comunidade</a>
                     <a routerLink="/todo" routerLinkActive="active">Recursos</a>
-                    <a routerLink="/about" routerLinkActive="active">Comunidade</a>
                 </div>
                 <div class="buttons-actions">
                     <button mat-flat-button class="btn btn-create" *ngIf="!isLoged()" (click)="openCreateDialog()">Criar Conta</button>
