@@ -56,7 +56,6 @@ export class SchedulingComponent implements OnInit {
     })
   }
 
-
   getHorariosByMonitor() {
     this.http.get('https://api-vapor.fly.dev/monitores/' + this.monitorSelectedId + '/agenda', {
       headers: {
@@ -68,6 +67,17 @@ export class SchedulingComponent implements OnInit {
       console.error(error);
     })
   }
+  // getHorariosByMonitor() {
+  //   this.http.get('https://api-vapor.fly.dev/monitores/:id/agenda', {
+  //     headers: {
+  //       'Authorization': 'Bearer ' + localStorage.getItem('token')
+  //     }
+  //   }).subscribe((result: any) => {
+  //     this.availableTimes = result ;
+  //   }, (error) => {
+  //     console.error(error);
+  //   })
+  // }
 
   // https://api-vapor.fly.dev/monitores/:id/agenda
 

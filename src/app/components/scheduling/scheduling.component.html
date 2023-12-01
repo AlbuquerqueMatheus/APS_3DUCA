@@ -29,6 +29,7 @@
                 <mat-autocomplete #autoTime="matAutocomplete">
                   <mat-option *ngFor="let time of availableTimes" [value]="time" (click)="selectedTimeMonitor(time)">
                     {{ formatTime(time)  }}
+                    <!-- {{ time  }} -->
                   </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
